@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { mount } from 'marketing/MarketingApp';
 
-export default () => {
+export default ({onAuthChange}) => {
     const ref = useRef(null);
     const history = useHistory();
 
@@ -17,7 +17,8 @@ export default () => {
                 if (pathname !== nextPathname){
                     history.push(nextPathname);
                 }
-            }
+            },
+            onAuthChange,
         });
 
         history.listen(onParentNavigate);
