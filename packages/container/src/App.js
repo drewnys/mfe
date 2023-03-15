@@ -29,7 +29,7 @@ export default () => {
                                 <AuthLazy onAuthChange={() => setIsSignedIn(true)} />
                             </Route>
                             <Route path='/' >
-                                <MarketingLazy onAuthChange={() => setIsSignedIn(true)} />
+                                <MarketingLazy />
                             </Route>
                         </Switch> 
                     </Suspense>

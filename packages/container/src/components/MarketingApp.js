@@ -1,28 +1,25 @@
+import { mount } from 'marketing/MarketingApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { mount } from 'marketing/MarketingApp';
 
-export default ({onAuthChange}) => {
-    const ref = useRef(null);
-    const history = useHistory();
+export default () => {
+  const ref = useRef(null);
+  const history = useHistory();
 
-    // useEffect ensures that the code runs only a single time
-    useEffect(()=> {
-        const { onParentNavigate } = mount(ref.current, {
-            initialPath: history.location.pathname,
-            // Listen for pathname change in marketing module
-            onNavigate: ({ pathname: nextPathname }) => {
-                const { pathname } = history.location;
+  useEffect(() => {
+    const { onParentNavigate } = mount(ref.current, {
+      initialPath: history.location.pathname,
+      onNavigate: ({ pathname: nextPathname }) => {
+        const { pathname } = history.location;
 
-                if (pathname !== nextPathname){
-                    history.push(nextPathname);
-                }
-            },
-            onAuthChange,
-        });
+        if (pathname !== nextPathname) {
+          history.push(nextPathname);
+        }
+      },
+    });
 
-        history.listen(onParentNavigate);
-    }, []); // Empty array [] to indicate to only run this function when MarketingApp is first rendered
-    
-    return <div ref={ref} />;
+    history.listen(onParentNavigate);
+  }, []);
+
+  return <div ref={ref} />;
 };
