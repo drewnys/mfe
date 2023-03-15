@@ -7,6 +7,7 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 // Added lazy and suspense for lazy loading
 const AuthLazy = lazy(() => import('./components/AuthApp'));
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
+const DashboardLazy = lazy(() => import('./components/DashboardApp'));
 
 const generateClassName = createGenerateClassName({
     productionPrefix: 'co' // Custom prefix for CSS collision abatement 
@@ -27,6 +28,9 @@ export default () => {
                         <Switch>
                             <Route path='/auth' >
                                 <AuthLazy onAuthChange={() => setIsSignedIn(true)} />
+                            </Route>
+                            <Route path='/dashboard' >
+                                <DashboardLazy />
                             </Route>
                             <Route path='/' >
                                 <MarketingLazy />

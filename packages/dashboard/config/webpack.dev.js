@@ -7,23 +7,25 @@ const packageJson = require('../package.json'); // Shortcut to automatically sha
 const devConfig = {
     mode: 'development',
     output: {
-        publicPath: 'http://localhost:8080/',
+        publicPath: 'http://localhost:8083/',
     },
     devServer: {
-        port: 8080,
+        port: 8083,
         historyApiFallback: {
             index: '/index.html',
-        }
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*' // Configuring to allow us to load up fonts through CORS
+        },
     },
     plugins: [
-        new ModuleFederationPlugin ({
-            name: 'container',
-            remotes: {
-                marketing: 'marketing@http://localhost:8081/remoteEntry.js',
-                auth: 'auth@http://localhost:8082/remoteEntry.js',
-                dashboard: 'dashboard@http://localhost:8083/remoteEntry.js',
+        new ModuleFederationPlugin({
+            name: 'dashboard',
+            filename: 'remoteEntry.js',
+            exposes: {
+                './DashboardApp': './src/bootstrap'
             },
-            shared: packageJson.dependencies, // This can be more granular if you want
+            shared: packageJson.dependencies,  // This can be more granular if you want
         }),
     ]
 }

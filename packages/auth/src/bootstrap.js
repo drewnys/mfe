@@ -4,7 +4,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history';  // Use Mem
 import App from './App';
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, onAuthChange, defaultHistory, initialPath }) => {
+const mount = (el, { onAuthChange, onNavigate, defaultHistory, initialPath }) => {
     // If we provided a default history use it, otherwise create it with initial path
     const history = defaultHistory || createMemoryHistory({
         initialEntries: [initialPath]
