@@ -9,6 +9,7 @@ import { createBrowserHistory } from 'history'
 const AuthLazy = lazy(() => import('./components/AuthApp'));
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
 const DashboardLazy = lazy(() => import('./components/DashboardApp'));
+const AngularLazy = lazy(() => import('./components/AngularDemoApp'))
 
 const generateClassName = createGenerateClassName({
     productionPrefix: 'co' // Custom prefix for CSS collision abatement 
@@ -41,6 +42,9 @@ export default () => {
                             <Route path='/dashboard' >
                                 {!isSignedIn && <Redirect to="/" />}
                                 <DashboardLazy />
+                            </Route>
+                            <Route path='/angular' >
+                                <AngularLazy />
                             </Route>
                             <Route path='/' >
                                 <MarketingLazy />
