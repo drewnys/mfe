@@ -49,7 +49,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "extraWebpackConfig": "webpack.prod.config.js",
+              "extraWebpackConfig": "webpack.prod.js",
               "outputHashing": "all"
             },
             "development": {
@@ -67,13 +67,13 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "angulardemo:build",
-            "extraWebpackConfig": "webpack.config.js",
+            "extraWebpackConfig": "webpack.dev.js",
             "port": 4200
           },
           "configurations": {
             "production": {
               "browserTarget": "angulardemo:build:production",
-              "extraWebpackConfig": "webpack.prod.config.js"
+              "extraWebpackConfig": "webpack.prod.js"
             },
             "development": {
               "browserTarget": "angulardemo:build:development"
