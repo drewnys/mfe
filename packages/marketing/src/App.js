@@ -4,13 +4,19 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 
 import Landing from './components/Landing';
 import Pricing from './components/Pricing';
+import "./components/custom-element.js"
 
 const generateClassName = createGenerateClassName({
     productionPrefix: 'ma' // Custom prefix for CSS collision abatement 
 })
 
 export default ({ history }) => {
+
     return <div>
+        <my-product name="Headphones">
+            <h2>Some really cool description of headphones.</h2>
+            <div slot="price">$19.99</div>
+        </my-product>
         <StylesProvider generateClassName={generateClassName}>
             <Router history={history}>
                 <Switch>
