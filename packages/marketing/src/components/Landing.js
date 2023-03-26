@@ -69,6 +69,10 @@ export default function Album() {
   return (
     <React.Fragment>
       <main>
+      <my-product name="React Web Componenet!">
+            <h2>We did it with React!</h2>
+            <div slot="price">slot slot slot</div>
+        </my-product>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">

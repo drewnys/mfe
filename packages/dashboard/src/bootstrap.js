@@ -1,5 +1,7 @@
 import { createApp } from 'vue';
 import Dashboard from './components/Dashboard';
+import wrap from '@vue/web-component-wrapper';
+import './components/custom-element.js';
 
 // Mount function to start up the app
 const mount = (el) => {
